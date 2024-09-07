@@ -10,12 +10,13 @@ source:
   sha256: a300b2d5a4989857ff1d0c3971624766a89a751e315aa080c07865031ae637a7
 
 build:
-  number: 1
+  number: 2
   script: '{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv '
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
   host:
     - pip
     - python
