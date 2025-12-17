@@ -1,21 +1,22 @@
 {% set name = "intbitset" %}
-{% set version = "3.0.2" %}
+{% set version = "4.1.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: a300b2d5a4989857ff1d0c3971624766a89a751e315aa080c07865031ae637a7
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 73145ff05e4227c76585ff8550638b6a083cd130010b781045d81af58f7b6920
 
 build:
-  number: 1
+  number: 0
   script: '{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv '
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
   host:
     - pip
     - python
