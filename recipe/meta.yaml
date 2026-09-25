@@ -1,34 +1,35 @@
 {% set name = "intbitset" %}
-{% set version = "3.0.2" %}
+{% set version = "4.1.2" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: a300b2d5a4989857ff1d0c3971624766a89a751e315aa080c07865031ae637a7
+  url: https://files.pythonhosted.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: f82fafe0bcb4fe7a010d942099b5a84d721d37c897538ed632f788962c1411f8
 
 build:
-  number: 1
-  script: '{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv '
+  number: 0
+  script: '{{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed -vv '
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib('c') }}
   host:
     - pip
     - python
+    - setuptools
   run:
     - python
-    - six
 
 test:
   imports:
     - intbitset
 
 about:
-  home: http://github.com/inveniosoftware/intbitset/
+  home: https://github.com/inveniosoftware-contrib/intbitset/
   license: LGPL-3.0-or-later
   license_family: LGPL
   license_file: LICENSE
